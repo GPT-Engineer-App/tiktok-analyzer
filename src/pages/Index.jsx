@@ -23,8 +23,8 @@ const Index = () => {
 
     setLoading(true);
     const data = await client.get(`tiktok:${username}`);
-    if (data) {
-      setUserInfo(data[0]?.value);
+    if (data && data.length > 0) {
+      setUserInfo(data[0].value);
     } else {
       toast({
         title: "Bulunamadı",
