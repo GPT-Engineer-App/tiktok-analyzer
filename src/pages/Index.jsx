@@ -12,8 +12,8 @@ const Index = () => {
   const handleSearch = async () => {
     if (!username.trim()) {
       toast({
-        title: "Error",
-        description: "Username can't be empty",
+        title: "Hata",
+        description: "Kullanıcı adı boş olamaz",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -27,8 +27,8 @@ const Index = () => {
       setUserInfo(data[0]?.value);
     } else {
       toast({
-        title: "Not Found",
-        description: "User not found in the database",
+        title: "Bulunamadı",
+        description: "Kullanıcı veritabanında bulunamadı",
         status: "warning",
         duration: 3000,
         isClosable: true,
@@ -42,30 +42,30 @@ const Index = () => {
     <Container maxW="container.md" py={10}>
       <VStack spacing={5}>
         <Heading as="h1" size="xl">
-          TikTok Profile Analyzer
+          TikTok Profil Analizörü
         </Heading>
-        <Text>Enter a TikTok username to retrieve user data.</Text>
+        <Text>TikTok kullanıcı adını girin ve kullanıcı verilerini alın.</Text>
         <Box w="100%">
           <Input placeholder="Enter TikTok username" value={username} onChange={(e) => setUsername(e.target.value)} size="lg" />
           <Button leftIcon={<FaSearch />} colorScheme="teal" onClick={handleSearch} isLoading={loading} mt={4} w="100%">
-            Search
+            Ara
           </Button>
         </Box>
         {userInfo && (
           <Box w="100%" p={4} borderWidth="1px" borderRadius="lg">
             <Heading as="h2" size="md">
-              User Information
+              Kullanıcı Bilgileri
             </Heading>
             <Text>
-              <strong>Username:</strong> {userInfo.username}
+              <strong>Kullanıcı Adı:</strong> {userInfo.username}
             </Text>
             <Text>
-              <strong>Followers:</strong> {userInfo.followers}
+              <strong>Takipçiler:</strong> {userInfo.followers}
             </Text>
             <Text>
-              <strong>Likes:</strong> {userInfo.likes}
+              <strong>Beğeniler:</strong> {userInfo.likes}
             </Text>
-            {userInfo.profilePic && <Image src={userInfo.profilePic} alt="Profile Picture" boxSize="100px" borderRadius="full" objectFit="cover" />}
+            {userInfo.profilePic && <Image src={userInfo.profilePic} alt="Profil Resmi" boxSize="100px" borderRadius="full" objectFit="cover" />}
           </Box>
         )}
         {loading && <Spinner />}
